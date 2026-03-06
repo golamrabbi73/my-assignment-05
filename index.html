@@ -33,14 +33,14 @@
             <fieldset class="fieldset w-xs">
 
             <label class="label font-medium text-black text-[16px]">Username</label>
-            <input type="email" class="input" placeholder="Enter Username" />
+            <input id="login-username" type="email" class="input" placeholder="Enter Username" />
             <small class="text-[14px] text-[#4A00FF] mb-4">Defualt: admin</small>
 
             <label class="label font-medium text-black text-[16px]">Password</label>
-            <input type="password" class="input" placeholder="Enter Password" />
+            <input id="login-password" type="password" class="input" placeholder="Enter Password" />
             <small class="text-[14px] text-[#4A00FF]">Defualt: admin123</small>
 
-            <button class="btn btn-primary mt-4">Sign In</button>
+            <button id="login-btn" class="btn btn-primary mt-4">Sign In</button>
             </fieldset>
         </section>
         <span class="my-2">OR</span>
@@ -51,5 +51,6 @@
             <p><span class="font-bold">Password:</span> admin123</p>
         </section>
     </main>
+    <script src="login.js"></script>
 </body>
 </html>
