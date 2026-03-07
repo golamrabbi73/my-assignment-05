@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github Issue Tracker</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- tailwind + daisyUi -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- navbar -->
+    <nav class="bg-base-100 shadow-sm py-2">
+        <div class="navbar flex justify-between w-11/12 m-auto">
+            <!-- logo -->
+            <div class="flex items-center justify-center gap-1">
+                <img class="w-9" src="./assets/github-logo.png" alt="">
+                <h2 class="font-semibold text-2xl">GitHub Issues Tracker</h2>
+            </div>
+            <!-- navbar end -->
+            <div class="flex gap-2">
+                <!-- input box -->
+                <label class="input">
+                    <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <g
+                            stroke-linejoin="round"
+                            stroke-linecap="round"
+                            stroke-width="2.5"
+                            fill="none"
+                            stroke="currentColor"
+                            >
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.3-4.3"></path>
+                        </g>
+                    </svg>
+                    <input type="search" class="grow" placeholder="Search issues..." />
+                </label>
+                <!-- button -->
+                <button class="btn btn-primary">
+                    <i class="fa-solid fa-plus"></i>
+                    New Issue
+                </button>
+            </div>
+        </div>
+    </nav>
+    <main  class="py-14 space-y-4">
+        <!-- button section -->
+        <section>
+            <div class="btn-container py-6 w-8/12 m-auto pl-4 space-x-2">
+                <button id="all-toggle-btn" onclick="btnToggle('all-toggle-btn')" class="btn btn-primary text-white">All</button>
+                <button id="open-toggle-btn" onclick="btnToggle('open-toggle-btn')" class="btn text-[#64748B]">Open</button>
+                <button id="closed-toggle-btn" onclick="btnToggle('closed-toggle-btn')" class="btn text-[#64748B]">Closed</button>
+            </div>
+        </section>
+        <!-- status section -->
+        <section>
+            <div class="status-container flex items-center p-6 w-8/12 m-auto pl-4 gap-2">
+                <div class="flex gap-2 items-center">
+                    <div>
+                        <img src="./assets/Aperture.png" alt="">
+                    </div>
+                    <div>
+                        <h2 class="text-[20px] font-semibold"><span>50</span> Issues</h2>
+                        <p class="text-[#64748B]">Track and manage your project issues</p>
+                    </div>
+                </div>
+                <div class=" flex gap-4 ml-auto">
+                    <div class="flex items-center">
+                        <div aria-label="success" class="status status-success  mr-2">
+                        </div>
+                        <span>Open</span>
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <div aria-label="status" class="status status-primary mr-2">
+                        </div>
+                        <span>Closed</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
