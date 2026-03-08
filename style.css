@@ -8,6 +8,11 @@
 }
 
 .btn-container,
-.status-container{
+.status-container,
+.issue-container{
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.btm-border{
+  border-bottom: 1px solid rgb(231, 231, 231);
 }
