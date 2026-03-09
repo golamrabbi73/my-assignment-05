@@ -60,6 +60,55 @@ const closedIssues = () => {
         displayIssue(closed);
     })
 }
+
+const loadIssueDetails = async(id) =>{
+    const url = `
+    https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
+    const res = await fetch(url);
+    const details = await res.json();
+    displayIssueDetails(details.data);
+};
+
+const displayIssueDetails = (issue) =>{
+    const detailsBox = document.getElementById("details-container");
+    detailsBox.innerHTML = `
+                        <div>
+                        <h2 class="text-2xl font-bold mb-2">${issue.title}</h2>
+                        <div class="flex items-center space-x-1">
+                            <span class=" text-white bg-[#00A96E] p-1 rounded-full text-center text-[12px] font-medium px-2">${issue.status}</span>
+                            <div class="circle"></div>
+                            <span class="text-[#64748B] text-[12px]">Opened by Fahim Ahmed</span>
+                            <div class="circle"></div>
+                            <span class="text-[#64748B] text-[12px]">22/02/2026</span>
+                        </div>
+                        <div class="my-6 flex gap-1 max-h-7">
+                            <p class="uppercase text-red-500 bg-red-50 border min-w-14 p-1 border-solid rounded-full text-center text-[12px] font-medium whitespace-nowrap overflow-hidden text-ellipsis">
+                                <i class="fa-solid fa-bug"></i>
+                                <span>${issue.labels[0]}</span>
+                            </p>
+                            ${issue.labels[1] ? `
+                                        <p class="uppercase text-yellow-600 bg-yellow-50 border min-w-28 p-1 border-solid rounded-full text-center text-[12px] font-medium whitespace-nowrap overflow-hidden text-ellipsis">
+                                        <i class="fa-solid fa-bug"></i>
+                                         <span>${issue.labels[1]}</span>
+                                    </p>` : ""}   
+                        </div>
+                        <p class="text-[#64748B]">${issue.description}</p>
+                        <div class="flex my-6 p-4">
+                            <div class="flex-1">
+                                <span class="text-[#64748B]">Assignee:</span>
+                                <p>Fahim Ahmed</p>
+                            </div>
+                            <div class="w-52 m-auto">
+                                <p class="text-[#64748B]">Priority:</p>
+                                <span class=" text-white bg-[#00A96E] p-1 rounded-full text-center text-[12px] font-medium px-2">${issue.priority}</span>
+                            </div>
+                        </div>
+                    </div>
+    `;
+    document.getElementById("issue_modal").showModal();
+}
+
+// issue display funcion
 const displayIssue = (issues) => {
     // const issueContainer = document.getElementById("issue-container");
     issueContainer.innerHTML = "";
@@ -77,7 +126,7 @@ const displayIssue = (issues) => {
                         <div class="btm-border p-4">
                             <div class="flex justify-between items-center">
                                 <img src="${statusImg}" alt="">
-                                <span class="uppercase text-red-600 bg-red-100 w-20 border-solid rounded-full text-center text-[12px] font-medium py-1">High</span>
+                                <span onclick="loadIssueDetails(${issue.id})" class="uppercase text-red-600 bg-red-100 w-20 border-solid rounded-full text-center text-[12px] font-medium py-1 cursor-pointer">${issue.priority}</span>
                             </div>
                             <div>
                                 <h2 class="text-[14px] font-semibold capitalize mt-3 line-clamp-2 min-h-11">${issue.title}</h2>

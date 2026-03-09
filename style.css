@@ -16,3 +16,10 @@
 .btm-border{
   border-bottom: 1px solid rgb(231, 231, 231);
 }
+
+.circle{
+  background-color: gray;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+}
