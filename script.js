@@ -1,3 +1,4 @@
+let allIssueData = [];
 const allBtn = document.getElementById("all-tab-btn");
 const openBtn = document.getElementById("open-tab-btn");
 const closedBtn = document.getElementById("closed-tab-btn");
@@ -34,10 +35,25 @@ const allIssues = () => {
     .then(res => res.json())
     .then(json => {
         const issueAll = json.data;
+
+        allIssueData = issueAll;
+
         issueCount.innerText = issueAll.length;
         displayIssue(issueAll)
     })
 };
+
+// search functionality
+document.getElementById("search-input").addEventListener("input", function(e){
+    const searchText = e.target.value.toLowerCase();
+    const filtered = allIssueData.filter(issue =>
+        issue.title.toLowerCase().includes(searchText) ||
+        issue.description.toLowerCase().includes(searchText)
+    );
+    issueCount.innerText = filtered.length;
+
+    displayIssue(filtered);
+})
 
 // open issues function
 const openIssues = () => {
