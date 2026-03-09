@@ -3,6 +3,7 @@ const allBtn = document.getElementById("all-tab-btn");
 const openBtn = document.getElementById("open-tab-btn");
 const closedBtn = document.getElementById("closed-tab-btn");
 const issueContainer = document.getElementById("issue-container");
+const loader = document.getElementById("loading-spinner");
 let issueCount = document.getElementById("issue-count");
 
 // button toggle functionality
@@ -28,9 +29,19 @@ const btnToggle = (id) =>{
         closedIssues()
     }
 }
+// show loader
+function showLoader(){
+    loader.classList.remove("hidden");
+}
+
+// hide loader
+function hideLoader(){
+    loader.classList.add("hidden");
+}
 
 // all issues function
 const allIssues = () => {
+    showLoader()
     fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
     .then(res => res.json())
     .then(json => {
@@ -40,6 +51,7 @@ const allIssues = () => {
 
         issueCount.innerText = issueAll.length;
         displayIssue(issueAll)
+        hideLoader()
     })
 };
 
@@ -57,23 +69,27 @@ document.getElementById("search-input").addEventListener("input", function(e){
 
 // open issues function
 const openIssues = () => {
+    showLoader()
     fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
     .then(res => res.json())
     .then(json => {
         const open = json.data.filter(issue => issue.status === "open");
         issueCount.innerText = open.length;
         displayIssue(open);
+        hideLoader()
     })
 }
 
 // closed issues function
 const closedIssues = () => {
+    showLoader()
     fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
     .then(res => res.json())
     .then(json => {
         const closed = json.data.filter(issue => issue.status === "closed");
         issueCount.innerText = closed.length;
         displayIssue(closed);
+        hideLoader()
     })
 }
 
