@@ -109,28 +109,26 @@ const displayIssueDetails = (issue) =>{
                         <div>
                         <h2 class="text-2xl font-bold mb-2">${issue.title}</h2>
                         <div class="flex items-center space-x-1">
-                            <span class=" text-white bg-[#00A96E] p-1 rounded-full text-center text-[12px] font-medium px-2">${issue.status}</span>
+                            ${issue.status === "open" ? `<span class=" text-white bg-[#00A96E] p-1 rounded-full text-center text-[12px] font-medium px-2">${issue.status}</span>` : `<span class=" text-white bg-purple-500 p-1 rounded-full text-center text-[12px] font-medium px-2">${issue.status}</span>`}
                             <div class="circle"></div>
-                            <span class="text-[#64748B] text-[12px]">Opened by Fahim Ahmed</span>
+                            <span class="text-[#64748B] text-[12px]">${issue.status === "open" ? `Opened by ${issue.assignee}` : `Closed by ${issue.assignee}`}</span>
                             <div class="circle"></div>
                             <span class="text-[#64748B] text-[12px]">22/02/2026</span>
                         </div>
                         <div class="my-6 flex gap-1 max-h-7">
                             <p class="uppercase text-red-500 bg-red-50 border min-w-14 p-1 border-solid rounded-full text-center text-[12px] font-medium whitespace-nowrap overflow-hidden text-ellipsis">
-                                <i class="fa-solid fa-bug"></i>
                                 <span>${issue.labels[0]}</span>
                             </p>
                             ${issue.labels[1] ? `
-                                        <p class="uppercase text-yellow-600 bg-yellow-50 border min-w-28 p-1 border-solid rounded-full text-center text-[12px] font-medium whitespace-nowrap overflow-hidden text-ellipsis">
-                                        <i class="fa-solid fa-bug"></i>
-                                         <span>${issue.labels[1]}</span>
-                                    </p>` : ""}   
+                                <p class="uppercase text-yellow-600 bg-yellow-50 border min-w-28 p-1 border-solid rounded-full text-center text-[12px] font-medium whitespace-nowrap overflow-hidden text-ellipsis">
+                                    <span>${issue.labels[1]}</span>
+                                </p>` : ""}   
                         </div>
                         <p class="text-[#64748B]">${issue.description}</p>
                         <div class="flex my-6 p-4">
                             <div class="flex-1">
                                 <span class="text-[#64748B]">Assignee:</span>
-                                <p>Fahim Ahmed</p>
+                                <p>${issue.assignee}</p>
                             </div>
                             <div class="w-52 m-auto">
                                 <p class="text-[#64748B]">Priority:</p>
@@ -156,7 +154,7 @@ const displayIssue = (issues) => {
         }
         const issueDiv = document.createElement("div");
         issueDiv.innerHTML = `
-                    <div class="card ${issue.status === "open" ? "open-border" : "closed-border  "} bg-base-100 w-3xs h-72 shadow-sm">
+                    <div onclick="loadIssueDetails(${issue.id})" class="card ${issue.status === "open" ? "open-border" : "closed-border  "} bg-base-100 w-3xs h-72 shadow-sm">
                         <div class="btm-border p-4">
                             <div class="flex justify-between items-center">
                                 <img src="${statusImg}" alt="">
@@ -167,12 +165,10 @@ const displayIssue = (issues) => {
                                 <p class="text-[#64748B] text-[12px] mt-2 min-h-14">${issue.description}</p>
                                 <div class="mt-3 flex gap-1 max-h-7">
                                     <p class="uppercase text-red-500 bg-red-50 border min-w-14 p-1 border-solid rounded-full text-center text-[12px] font-medium whitespace-nowrap overflow-hidden text-ellipsis">
-                                        <i class="fa-solid fa-bug"></i>
                                         <span>${issue.labels[0]}</span>
                                     </p>
                                     ${issue.labels[1] ? `
                                         <p class="uppercase text-yellow-600 bg-yellow-50 border min-w-28 p-1 border-solid rounded-full text-center text-[12px] font-medium whitespace-nowrap overflow-hidden text-ellipsis">
-                                        <i class="fa-solid fa-bug"></i>
                                          <span>${issue.labels[1]}</span>
                                     </p>` : ""}
                                     

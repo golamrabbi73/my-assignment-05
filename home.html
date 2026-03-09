@@ -21,7 +21,7 @@
 <body>
     <!-- navbar -->
     <nav class="bg-base-100 shadow-sm py-2">
-        <div class="navbar flex justify-between w-11/12 m-auto">
+        <div class="navbar flex flex-col sm:flex-row justify-between w-11/12 m-auto gap-4 sm:gap-0">
             <!-- logo -->
             <div class="flex items-center justify-center gap-1">
                 <img class="w-9" src="./assets/github-logo.png" alt="">
@@ -30,7 +30,7 @@
             <!-- navbar end -->
             <div class="flex gap-2">
                 <!-- input box -->
-                <label class="input">
+                <label class="input flex-1 min-w-0">
                     <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <g
                             stroke-linejoin="round"
@@ -88,33 +88,7 @@
         </div>
 
         <!-- card section -->
-        <section id="issue-container" class="bg-base-100 shadow-sm w-10/12 m-auto p-6 grid grid-cols-4 gap-3">
-            <!-- <div class="card bg-base-100 w-3xs shadow-sm">
-                <div class="btm-border p-4">
-                    <div class="flex justify-between items-center">
-                        <img src="./assets/Open-Status.png" alt="">
-                        <span class="uppercase text-red-600 bg-red-100 w-20 border-solid rounded-full text-center text-[12px] font-medium py-1">High</span>
-                    </div>
-                    <div>
-                        <h2 class="text-[14px] font-semibold capitalize mt-3">Fix navigation menu on mobile devices</h2>
-                        <p class="text-[#64748B] text-[12px] mt-2">The navigation menu doesn't collapse properly on mobile devices...</p>
-                        <div class="mt-3 flex gap-1">
-                            <p class="uppercase text-red-500 bg-red-50 border w-14 p-1 border-solid rounded-full text-center text-[12px] font-medium ">
-                                <i class="fa-solid fa-bug"></i>
-                                <span>Bug</span>
-                            </p>
-                            <p class="uppercase text-yellow-600 bg-yellow-50 border w-28 p-1 border-solid rounded-full text-center text-[12px] font-medium ">
-                                <i class="fa-solid fa-bug"></i>
-                                <span>help wanted</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <p class="text-[12px] text-[#64748B] mb-2">#1 by john_doe</p>
-                    <p class="text-[12px] text-[#64748B]">1/15/2024</p>
-                </div>
-            </div> -->
+        <section id="issue-container" class="bg-base-100 shadow-sm w-10/12 m-auto p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         </section>
 
         <!-- Open the modal using ID.showModal() method -->
