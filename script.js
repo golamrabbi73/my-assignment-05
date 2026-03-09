@@ -61,6 +61,7 @@ const closedIssues = () => {
     })
 }
 
+// modal load
 const loadIssueDetails = async(id) =>{
     const url = `
     https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
@@ -69,6 +70,7 @@ const loadIssueDetails = async(id) =>{
     displayIssueDetails(details.data);
 };
 
+// modal display
 const displayIssueDetails = (issue) =>{
     const detailsBox = document.getElementById("details-container");
     detailsBox.innerHTML = `
@@ -122,7 +124,7 @@ const displayIssue = (issues) => {
         }
         const issueDiv = document.createElement("div");
         issueDiv.innerHTML = `
-                    <div class="card bg-base-100 w-3xs h-72 shadow-sm">
+                    <div class="card ${issue.status === "open" ? "open-border" : "closed-border  "} bg-base-100 w-3xs h-72 shadow-sm">
                         <div class="btm-border p-4">
                             <div class="flex justify-between items-center">
                                 <img src="${statusImg}" alt="">

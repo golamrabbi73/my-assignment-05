@@ -23,3 +23,10 @@
   height: 4px;
   border-radius: 50%;
 }
+
+.open-border{
+  border-top: 3px solid green;
+}
+.closed-border{
+  border-top: 3px solid purple;
+}
